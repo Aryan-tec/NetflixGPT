@@ -89,65 +89,77 @@ const Login = () => {
   };
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-black">
       <Header />
+
       <div className="absolute inset-0">
         <img
           src={HOME_BG}
-          alt="Netflix logo"
+          alt="Netflix background"
+          className="w-full h-full object-cover"
         />
-        {/* <div className="absolute inset-0 bg-black/50" /> */}
+        <div className="absolute inset-0 bg-black/60" />
       </div>
+
       <div className="relative z-10 flex min-h-screen items-center justify-center px-4">
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="w-11/12 max-w-md space-y-4 rounded bg-black/60 p-8 backdrop-blur-sm"
+          className="w-full max-w-md space-y-6 rounded-lg bg-black/70 p-8 backdrop-blur-sm sm:p-10"
         >
-          <h1 className="text-3xl font-bold text-white">
+          <h1 className="text-3xl font-bold text-white text-center">
             {isSignInForm ? "Sign In" : "Sign Up"}
           </h1>
+
           {!isSignInForm && (
             <input
               ref={name}
               type="text"
               placeholder="Full Name"
-              className="w-full rounded bg-[#333] p-3 text-white placeholder-gray-300 outline-none"
+              className="w-full rounded bg-[#333] p-3 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-red-600"
             />
           )}
+
           <input
             ref={email}
             type="text"
             placeholder="Email Address"
-            className="w-full rounded bg-[#333] p-3 text-white placeholder-gray-300 outline-none"
+            className="w-full rounded bg-[#333] p-3 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-red-600"
           />
+
           <input
             ref={password}
             type="password"
             placeholder="Password"
-            className="w-full rounded bg-[#333] p-3 text-white placeholder-gray-300 outline-none"
+            className="w-full rounded bg-[#333] p-3 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-red-600"
           />
-          <p className="text-red-500 font-bold text-base py-2">
-            {errorMessage}
-          </p>
+
+          {errorMessage && (
+            <p className="text-red-500 font-semibold text-sm text-center">
+              {errorMessage}
+            </p>
+          )}
+
           <button
-            className="w-full rounded bg-red-600 p-3 font-semibold text-white hover:bg-red-700"
+            className="w-full rounded bg-red-600 p-3 font-semibold text-white hover:bg-red-700 transition-colors duration-200"
             onClick={handleButtonClick}
           >
             {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
-          <div className="flex items-center justify-between text-sm text-gray-300">
+
+          <div className="flex items-center justify-between text-sm text-gray-400">
             <label className="inline-flex items-center gap-2">
               <input type="checkbox" className="accent-red-600" />
               Remember me
             </label>
           </div>
+
           <p
-            className="text-sm text-gray-300 cursor-pointer"
+            className="text-sm text-gray-400 text-center cursor-pointer hover:underline"
             onClick={toggleSignInForm}
           >
             {isSignInForm
               ? "New to Netflix? Sign Up now."
-              : "Already Registered? Sign In now."}
+              : "Already registered? Sign In now."}
           </p>
         </form>
       </div>
