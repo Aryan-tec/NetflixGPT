@@ -6,7 +6,7 @@ import { HOME_BG } from "../utils/constants";
 const GptSearch = () => {
   return (
     <div>
-      <div className="absolute inset-0">
+      <div className="fixed inset-0">
         <img
           src={HOME_BG}
           alt="Netflix logo"
